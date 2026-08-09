@@ -1,14 +1,14 @@
-/* =========================================
-   LOVE FOR HALIMA
+/* =====================================================
+   ❤️ LOVE FOR HALIMA
+   Premium Romantic Website
    script.js
-   Clean V4
-========================================= */
+===================================================== */
 
 "use strict";
 
-/* =========================================
-   ELEMENTS
-========================================= */
+/* =====================================================
+   BASIC ELEMENTS
+===================================================== */
 
 const loader = document.getElementById("loader");
 const startExperience = document.getElementById("startExperience");
@@ -29,9 +29,9 @@ const hearts = document.getElementById("hearts");
 const particles = document.getElementById("particles");
 
 
-/* =========================================
+/* =====================================================
    MUSIC
-========================================= */
+===================================================== */
 
 let musicPlaying = false;
 
@@ -51,7 +51,7 @@ function playMusic() {
         })
         .catch(() => {
 
-            console.log("Music requires user interaction.");
+            console.log("Music playback was blocked.");
 
         });
 }
@@ -68,20 +68,15 @@ function pauseMusic() {
     if (musicBtn) {
         musicBtn.textContent = "🎵";
     }
-
 }
 
 
 function toggleMusic() {
 
     if (musicPlaying) {
-
         pauseMusic();
-
     } else {
-
         playMusic();
-
     }
 
 }
@@ -94,9 +89,9 @@ if (musicBtn) {
 }
 
 
-/* =========================================
+/* =====================================================
    LOADING SCREEN
-========================================= */
+===================================================== */
 
 if (startExperience) {
 
@@ -104,26 +99,25 @@ if (startExperience) {
 
         playMusic();
 
-        if (loader) {
+        if (!loader) return;
 
-            loader.style.opacity = "0";
+        loader.style.opacity = "0";
+        loader.style.visibility = "hidden";
 
-            setTimeout(() => {
+        setTimeout(() => {
 
-                loader.style.display = "none";
+            loader.style.display = "none";
 
-            }, 1000);
-
-        }
+        }, 1000);
 
     });
 
 }
 
 
-/* =========================================
+/* =====================================================
    HERO
-========================================= */
+===================================================== */
 
 if (hero) {
 
@@ -131,7 +125,7 @@ if (hero) {
 
         <div class="card">
 
-            <h3>Made With ❤️</h3>
+            <h3>MADE WITH ❤️</h3>
 
             <h1>
                 For<br>
@@ -153,9 +147,9 @@ if (hero) {
 }
 
 
-/* =========================================
+/* =====================================================
    HERO TYPEWRITER
-========================================= */
+===================================================== */
 
 const heroMessage = `Hello Halima ❤️
 
@@ -163,23 +157,26 @@ I created this little website especially for you.
 
 Every click reveals another little piece of my heart.
 
-I hope it brings a smile to your face.
+I hope it brings a beautiful smile to your face.
 
 — Al-Ameen Umar`;
 
-const typing = document.getElementById("typing");
 
-function typeHero() {
+function typeHeroMessage() {
+
+    const typing = document.getElementById("typing");
 
     if (!typing) return;
 
-    typing.innerHTML = "";
-
     let index = 0;
+
+    typing.innerHTML = "";
 
     function write() {
 
-        if (index >= heroMessage.length) return;
+        if (index >= heroMessage.length) {
+            return;
+        }
 
         if (heroMessage[index] === "\n") {
 
@@ -201,12 +198,12 @@ function typeHero() {
 
 }
 
-typeHero();
+typeHeroMessage();
 
 
-/* =========================================
+/* =====================================================
    STORY
-========================================= */
+===================================================== */
 
 if (story) {
 
@@ -218,13 +215,19 @@ if (story) {
 
             <p>
 
-                Every beautiful story begins with a simple hello.
+                Every beautiful story begins with one simple moment.
 
-                Sometimes, one person can make ordinary moments
-                feel a little more special.
+                <br><br>
 
-                This website is a small way of saying that I
-                appreciate the opportunity to know you.
+                Sometimes, someone enters your life
+                and makes ordinary moments feel a little more special.
+
+                <br><br>
+
+                This website is a small way of creating
+                something meaningful for you.
+
+                <br><br>
 
                 ❤️
 
@@ -237,139 +240,30 @@ if (story) {
 }
 
 
-/* =========================================
-   NAVIGATION
-========================================= */
-
-function goTo(id) {
-
-    const section = document.getElementById(id);
-
-    if (!section) return;
-
-    section.scrollIntoView({
-        behavior: "smooth"
-    });
-
-}
-
+/* =====================================================
+   HERO → STORY
+===================================================== */
 
 document.addEventListener("click", (event) => {
 
     if (event.target.id === "beginStory") {
 
-        goTo("story");
+        if (story) {
+
+            story.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
 
     }
 
 });
 
 
-/* =========================================
-   FLOATING HEARTS
-========================================= */
-
-function createHeart() {
-
-    if (!hearts) return;
-
-    const heart = document.createElement("div");
-
-    heart.textContent = "❤️";
-
-    heart.style.position = "absolute";
-
-    heart.style.left =
-        Math.random() * 100 + "vw";
-
-    heart.style.top = "100vh";
-
-    heart.style.fontSize =
-        18 + Math.random() * 20 + "px";
-
-    heart.style.opacity =
-        0.4 + Math.random() * 0.6;
-
-    heart.style.transition =
-        "transform 8s linear, opacity 8s linear";
-
-    hearts.appendChild(heart);
-
-    requestAnimationFrame(() => {
-
-        heart.style.transform =
-            `translateY(-120vh) rotate(${Math.random() * 360}deg)`;
-
-        heart.style.opacity = "0";
-
-    });
-
-    setTimeout(() => {
-
-        heart.remove();
-
-    }, 8000);
-
-}
-
-setInterval(createHeart, 500);
-
-
-/* =========================================
-   SPARKLES
-========================================= */
-
-function createSparkle() {
-
-    if (!particles) return;
-
-    const sparkle = document.createElement("div");
-
-    sparkle.textContent = "✨";
-
-    sparkle.style.position = "fixed";
-
-    sparkle.style.left =
-        Math.random() * 100 + "vw";
-
-    sparkle.style.top =
-        Math.random() * 100 + "vh";
-
-    sparkle.style.fontSize =
-        12 + Math.random() * 14 + "px";
-
-    sparkle.style.opacity = "0.8";
-
-    sparkle.style.pointerEvents = "none";
-
-    sparkle.style.transition =
-        "opacity 2s, transform 2s";
-
-    particles.appendChild(sparkle);
-
-    requestAnimationFrame(() => {
-
-        sparkle.style.opacity = "0";
-
-        sparkle.style.transform =
-            "scale(1.8)";
-
-    });
-
-    setTimeout(() => {
-
-        sparkle.remove();
-
-    }, 2000);
-
-}
-
-setInterval(createSparkle, 700);
-
-
-/* =========================================
+/* =====================================================
    LOVE LETTER
-========================================= */
+===================================================== */
 
 if (letter) {
 
@@ -379,15 +273,11 @@ if (letter) {
 
             <h2>💌 A Letter For You</h2>
 
-            <div id="envelope"
-                 style="font-size:100px;cursor:pointer;">
-
+            <div id="envelope">
                 📩
-
             </div>
 
-            <div id="letterBox"
-                 style="display:none;">
+            <div id="letterBox" style="display:none;">
 
                 <p id="letterText"></p>
 
@@ -406,14 +296,36 @@ if (letter) {
 }
 
 
-const envelope =
-    document.getElementById("envelope");
+/* =====================================================
+   LETTER TYPEWRITER
+===================================================== */
 
-const letterBox =
-    document.getElementById("letterBox");
+const envelope = document.getElementById("envelope");
+const letterBox = document.getElementById("letterBox");
+const letterText = document.getElementById("letterText");
 
-const letterText =
-    document.getElementById("letterText");
+
+const loveLetter = `Dear Halima,
+
+Thank you for taking the time to explore this little surprise.
+
+I didn't want to give you something ordinary.
+
+I wanted to create something that would always remind you that someone thought you were worth the time, effort, and creativity.
+
+Every part of this website was made with sincerity.
+
+I hope it brings a smile to your face.
+
+And whenever you see these pages again,
+I hope they remind you of a beautiful moment.
+
+❤️
+
+With respect and admiration,
+
+Al-Ameen Umar`;
+
 
 if (envelope) {
 
@@ -427,38 +339,23 @@ if (envelope) {
 
         if (!letterText) return;
 
-        const letterMessage = `Dear Halima,
-
-Thank you for taking the time to explore this little website.
-
-I didn't want to give you something ordinary.
-
-I wanted to create something that would always remind you that you are appreciated.
-
-Every page was created with sincerity, time, effort, and a little bit of my heart.
-
-I hope it brings a smile to your face.
-
-❤️
-
-With respect and admiration,
-
-Al-Ameen Umar`;
+        letterText.innerHTML = "";
 
         let index = 0;
 
         function writeLetter() {
 
-            if (index >= letterMessage.length) return;
+            if (index >= loveLetter.length) {
+                return;
+            }
 
-            if (letterMessage[index] === "\n") {
+            if (loveLetter[index] === "\n") {
 
                 letterText.innerHTML += "<br>";
 
             } else {
 
-                letterText.innerHTML +=
-                    letterMessage[index];
+                letterText.innerHTML += loveLetter[index];
 
             }
 
@@ -475,102 +372,89 @@ Al-Ameen Umar`;
 }
 
 
-/* =========================================
+/* =====================================================
    GALLERY
-========================================= */
+===================================================== */
 
 if (gallery) {
 
     gallery.innerHTML = `
 
         <h2 class="gallery-title">
-            📸 Our Beautiful Memories
+            ❤️ Our Love Gallery ❤️
         </h2>
 
         <p class="gallery-subtitle">
-
-            Every picture tells another chapter
-            of this little story. ❤️
-
+            Every picture tells another chapter of this beautiful story.
         </p>
 
-        <div class="gallery-grid">
+        <div class="gallery">
 
-            <div class="gallery-card">
-                <img src="assets/images/Love1.jpg"
-                     alt="Love 1">
+            <div class="card">
+                <img src="assets/images/Love1.jpg" alt="Love 1">
                 <div class="overlay">
-                    🌹 A beautiful beginning.
+                    🌹 A love that grows every day.
                 </div>
             </div>
 
-            <div class="gallery-card">
-                <img src="assets/images/Love2.jpg"
-                     alt="Love 2">
+            <div class="card">
+                <img src="assets/images/Love2.jpg" alt="Love 2">
                 <div class="overlay">
-                    🌙 Every moment can become a memory.
+                    🌙 Every night reminds me of you.
                 </div>
             </div>
 
-            <div class="gallery-card">
-                <img src="assets/images/Love3.jpg"
-                     alt="Love 3">
+            <div class="card">
+                <img src="assets/images/Love3.jpg" alt="Love 3">
                 <div class="overlay">
                     💖 Small moments, lasting memories.
                 </div>
             </div>
 
-            <div class="gallery-card">
-                <img src="assets/images/Love4.png"
-                     alt="Love 4">
+            <div class="card">
+                <img src="assets/images/Love4.png" alt="Love 4">
                 <div class="overlay">
-                    ✨ Every journey starts somewhere.
+                    ✨ Every journey starts with one hello.
                 </div>
             </div>
 
-            <div class="gallery-card">
-                <img src="assets/images/Love5.jpg"
-                     alt="Love 5">
+            <div class="card">
+                <img src="assets/images/Love5.jpg" alt="Love 5">
                 <div class="overlay">
-                    🌸 Keep smiling.
+                    🌸 Every smile makes a moment brighter.
                 </div>
             </div>
 
-            <div class="gallery-card">
-                <img src="assets/images/Love6.jpg"
-                     alt="Love 6">
+            <div class="card">
+                <img src="assets/images/Love6.jpg" alt="Love 6">
                 <div class="overlay">
-                    💞 Beautiful moments are worth remembering.
+                    💞 Together, every moment becomes special.
                 </div>
             </div>
 
-            <div class="gallery-card">
-                <img src="assets/images/Love7.jpg"
-                     alt="Love 7">
+            <div class="card">
+                <img src="assets/images/Love7.jpg" alt="Love 7">
                 <div class="overlay">
-                    🌹 A favorite chapter.
+                    🌹 You are a beautiful chapter.
                 </div>
             </div>
 
-            <div class="gallery-card">
-                <img src="assets/images/Love8.jpg"
-                     alt="Love 8">
+            <div class="card">
+                <img src="assets/images/Love8.jpg" alt="Love 8">
                 <div class="overlay">
-                    ❤️ Written with the heart.
+                    ❤️ The best stories are written with the heart.
                 </div>
             </div>
 
-            <div class="gallery-card">
-                <img src="assets/images/Love9.jpg"
-                     alt="Love 9">
+            <div class="card">
+                <img src="assets/images/Love9.jpg" alt="Love 9">
                 <div class="overlay">
-                    💝 Another beautiful memory.
+                    💝 Every beautiful moment becomes a memory.
                 </div>
             </div>
 
-            <div class="gallery-card">
-                <img src="assets/images/Love10.png"
-                     alt="Love 10">
+            <div class="card">
+                <img src="assets/images/Love10.png" alt="Love 10">
                 <div class="overlay">
                     💍 Maybe this is only the beginning.
                 </div>
@@ -589,45 +473,52 @@ if (gallery) {
 }
 
 
-/* =========================================
-   GALLERY BUTTON
-========================================= */
+/* =====================================================
+   GALLERY NAVIGATION
+===================================================== */
 
 document.addEventListener("click", (event) => {
 
     if (event.target.id === "galleryBtn") {
 
-        goTo("gallery");
+        if (gallery) {
+
+            gallery.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
 
     }
 
+
     if (event.target.id === "reasonBtn") {
 
-        goTo("reasons");
+        if (reasons) {
+
+            reasons.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
 
     }
 
 });
 
 
-/* =========================================
+/* =====================================================
    LIGHTBOX
-========================================= */
+===================================================== */
 
-const lightbox =
-    document.getElementById("lightbox");
-
-const lightboxImg =
-    document.getElementById("lightbox-img");
-
-const closeBtn =
-    document.getElementById("close");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const closeButton = document.getElementById("close");
 
 
 document.addEventListener("click", (event) => {
 
-    const image =
-        event.target.closest(".gallery img, .gallery-card img");
+    const image = event.target.closest(".gallery img");
 
     if (!image) return;
 
@@ -640,11 +531,13 @@ document.addEventListener("click", (event) => {
 });
 
 
-if (closeBtn) {
+if (closeButton) {
 
-    closeBtn.addEventListener("click", () => {
+    closeButton.addEventListener("click", () => {
 
-        lightbox.style.display = "none";
+        if (lightbox) {
+            lightbox.style.display = "none";
+        }
 
     });
 
@@ -666,9 +559,26 @@ if (lightbox) {
 }
 
 
-/* =========================================
+/* =====================================================
+   ESCAPE KEY CLOSES LIGHTBOX
+===================================================== */
+
+document.addEventListener("keydown", (event) => {
+
+    if (event.key === "Escape") {
+
+        if (lightbox) {
+            lightbox.style.display = "none";
+        }
+
+    }
+
+});
+
+
+/* =====================================================
    REASONS
-========================================= */
+===================================================== */
 
 if (reasons) {
 
@@ -688,11 +598,11 @@ if (reasons) {
 
                 <br><br>
 
-                🌹 Your strength.
+                🌹 Your personality.
 
                 <br><br>
 
-                🌹 The way you make moments special.
+                🌹 The happiness you bring.
 
                 <br><br>
 
@@ -713,9 +623,9 @@ if (reasons) {
 }
 
 
-/* =========================================
+/* =====================================================
    SURPRISE
-========================================= */
+===================================================== */
 
 if (surprise) {
 
@@ -725,36 +635,32 @@ if (surprise) {
 
             <h2>🎁 One Last Surprise</h2>
 
-            <div id="giftBox"
-                 style="font-size:120px;cursor:pointer;">
-
+            <div id="giftBox">
                 🎁
-
             </div>
 
-            <div id="giftMessage"
-                 style="display:none;">
+            <div id="giftMessage" style="display:none;">
 
                 <h2>
-                    ❤️ Dear Halima ❤️
+                    Dear Halima ❤️
                 </h2>
 
                 <p>
 
                     Thank you for taking this journey
-                    through this little website.
+                    through this little world I created.
 
                     <br><br>
 
                     It isn't about expensive gifts.
 
-                    It's about showing that someone is
-                    worth time, effort, and creativity.
-
                     <br><br>
 
-                    I hope this little surprise
-                    makes you smile.
+                    Sometimes the smallest effort,
+                    when it comes from the heart,
+                    can mean the most.
+
+                    <br><br>
 
                     ❤️
 
@@ -775,15 +681,21 @@ if (surprise) {
 }
 
 
-/* =========================================
-   SURPRISE EVENTS
-========================================= */
+/* =====================================================
+   SURPRISE NAVIGATION
+===================================================== */
 
 document.addEventListener("click", (event) => {
 
     if (event.target.id === "surpriseBtn") {
 
-        goTo("surprise");
+        if (surprise) {
+
+            surprise.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
 
     }
 
@@ -792,13 +704,11 @@ document.addEventListener("click", (event) => {
 
         event.target.style.display = "none";
 
-        const message =
+        const giftMessage =
             document.getElementById("giftMessage");
 
-        if (message) {
-
-            message.style.display = "block";
-
+        if (giftMessage) {
+            giftMessage.style.display = "block";
         }
 
     }
@@ -806,16 +716,22 @@ document.addEventListener("click", (event) => {
 
     if (event.target.id === "loveGameBtn") {
 
-        goTo("question");
+        if (question) {
+
+            question.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
 
     }
 
 });
 
 
-/* =========================================
+/* =====================================================
    LOVE QUESTION
-========================================= */
+===================================================== */
 
 if (question) {
 
@@ -852,30 +768,39 @@ if (question) {
 }
 
 
-/* =========================================
-   NO BUTTON
-========================================= */
+/* =====================================================
+   RUN-AWAY NO BUTTON
+===================================================== */
 
-let noMoveCount = 0;
+let noButtonLevel = 0;
 
 document.addEventListener("mousemove", (event) => {
 
-    const noBtn =
+    const noButton =
         document.getElementById("noBtn");
 
-    const yesBtn =
+    const yesButton =
         document.getElementById("yesBtn");
 
-    const buttons =
+    const buttonArea =
         document.getElementById("buttons");
 
     const answer =
         document.getElementById("answer");
 
-    if (!noBtn || !yesBtn || !buttons) return;
+
+    if (
+        !noButton ||
+        !yesButton ||
+        !buttonArea
+    ) {
+        return;
+    }
+
 
     const rect =
-        noBtn.getBoundingClientRect();
+        noButton.getBoundingClientRect();
+
 
     const centerX =
         rect.left + rect.width / 2;
@@ -883,50 +808,61 @@ document.addEventListener("mousemove", (event) => {
     const centerY =
         rect.top + rect.height / 2;
 
+
+    const dx =
+        event.clientX - centerX;
+
+    const dy =
+        event.clientY - centerY;
+
+
     const distance =
-        Math.sqrt(
-            Math.pow(event.clientX - centerX, 2) +
-            Math.pow(event.clientY - centerY, 2)
-        );
+        Math.sqrt(dx * dx + dy * dy);
 
-    /* Keep at least 70px away */
 
-    if (distance < 70) {
+    if (distance < 80) {
 
         const maxX =
             Math.max(
                 0,
-                buttons.clientWidth - noBtn.offsetWidth
+                buttonArea.clientWidth -
+                noButton.offsetWidth
             );
+
 
         const maxY =
             Math.max(
                 0,
-                buttons.clientHeight - noBtn.offsetHeight
+                buttonArea.clientHeight -
+                noButton.offsetHeight
             );
 
-        noBtn.style.left =
+
+        noButton.style.left =
             Math.random() * maxX + "px";
 
-        noBtn.style.top =
+
+        noButton.style.top =
             Math.random() * maxY + "px";
 
-        noMoveCount++;
+
+        noButtonLevel++;
+
 
         const scale =
             Math.min(
                 2,
-                1 + noMoveCount * 0.08
+                1 + noButtonLevel * 0.08
             );
 
-        yesBtn.style.transform =
+
+        yesButton.style.transform =
             `scale(${scale})`;
+
 
         const replies = [
 
             "🥺 Are you sure?",
-
-            "😢 Think again...",
 
             "😂 Nice try!",
 
@@ -934,18 +870,24 @@ document.addEventListener("mousemove", (event) => {
 
             "🌹 You almost got it!",
 
-            "😜 I'm faster than you!",
+            "😜 I'm too fast!",
 
-            "🥹 Pleaseeeee..."
+            "🥹 Pleaseeeee...",
+
+            "💖 YES looks better!",
+
+            "🤣 Nope!"
 
         ];
+
 
         if (answer) {
 
             answer.textContent =
                 replies[
                     Math.floor(
-                        Math.random() * replies.length
+                        Math.random() *
+                        replies.length
                     )
                 ];
 
@@ -956,24 +898,72 @@ document.addEventListener("mousemove", (event) => {
 });
 
 
-/* =========================================
+/* =====================================================
+   TOUCH SUPPORT FOR NO BUTTON
+===================================================== */
+
+document.addEventListener("touchstart", (event) => {
+
+    const noButton =
+        document.getElementById("noBtn");
+
+    const buttonArea =
+        document.getElementById("buttons");
+
+    if (!noButton || !buttonArea) return;
+
+
+    if (event.target !== noButton) return;
+
+
+    const maxX =
+        Math.max(
+            0,
+            buttonArea.clientWidth -
+            noButton.offsetWidth
+        );
+
+
+    const maxY =
+        Math.max(
+            0,
+            buttonArea.clientHeight -
+            noButton.offsetHeight
+        );
+
+
+    noButton.style.left =
+        Math.random() * maxX + "px";
+
+
+    noButton.style.top =
+        Math.random() * maxY + "px";
+
+});
+
+
+/* =====================================================
    YES BUTTON
-========================================= */
+===================================================== */
 
 document.addEventListener("click", (event) => {
 
-    if (event.target.id !== "yesBtn") return;
+    if (event.target.id !== "yesBtn") {
+        return;
+    }
+
 
     const answer =
         document.getElementById("answer");
+
 
     if (answer) {
 
         answer.innerHTML = `
 
-            <h1>
+            <h2>
                 🥰❤️ YAYYYYY!! ❤️🥰
-            </h1>
+            </h2>
 
             <p>
 
@@ -982,13 +972,13 @@ document.addEventListener("click", (event) => {
 
                 <br><br>
 
-                Thank you, Halima. ❤️
+                Thank you, Halima.
+
+                ❤️
 
                 <br><br>
 
                 Love,
-
-                <br>
 
                 <b>Al-Ameen Umar</b>
 
@@ -998,39 +988,190 @@ document.addEventListener("click", (event) => {
 
     }
 
-    heartConfetti();
 
-    setTimeout(() => {
-
-        goTo("ending");
-
-    }, 1800);
+    createHeartConfetti();
 
 });
 
 
-/* =========================================
+/* =====================================================
    HEART CONFETTI
-========================================= */
+===================================================== */
 
-function heartConfetti() {
+function createHeartConfetti() {
 
-    for (let i = 0; i < 50; i++) {
+    if (!hearts) return;
+
+
+    for (let i = 0; i < 80; i++) {
 
         setTimeout(() => {
 
-            createHeart();
+            createHeart(true);
 
-        }, i * 40);
+        }, i * 25);
 
     }
 
 }
 
 
-/* =========================================
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+function createHeart(confetti = false) {
+
+    if (!hearts) return;
+
+
+    const heart =
+        document.createElement("div");
+
+
+    heart.textContent =
+        Math.random() > .5
+            ? "❤️"
+            : "💖";
+
+
+    heart.style.position =
+        "absolute";
+
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+
+    heart.style.top =
+        confetti
+            ? Math.random() * 50 + "vh"
+            : "100vh";
+
+
+    heart.style.fontSize =
+        (18 + Math.random() * 25) + "px";
+
+
+    heart.style.opacity =
+        .5 + Math.random() * .5;
+
+
+    heart.style.pointerEvents =
+        "none";
+
+
+    heart.style.transition =
+        confetti
+            ? "transform 3s ease-out, opacity 3s ease-out"
+            : "transform 8s linear, opacity 8s linear";
+
+
+    hearts.appendChild(heart);
+
+
+    requestAnimationFrame(() => {
+
+        const x =
+            (Math.random() - .5) * 200;
+
+
+        const y =
+            confetti
+                ? -(200 + Math.random() * 500)
+                : -window.innerHeight - 200;
+
+
+        heart.style.transform =
+            `translate(${x}px, ${y}px) rotate(${Math.random() * 360}deg)`;
+
+
+        heart.style.opacity = "0";
+
+    });
+
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    }, confetti ? 3500 : 8500);
+
+}
+
+
+setInterval(() => {
+
+    createHeart(false);
+
+}, 450);
+
+
+/* =====================================================
+   SPARKLES
+===================================================== */
+
+function createSparkle() {
+
+    if (!particles) return;
+
+
+    const sparkle =
+        document.createElement("div");
+
+
+    sparkle.textContent =
+        Math.random() > .5
+            ? "✨"
+            : "⭐";
+
+
+    sparkle.style.position =
+        "fixed";
+
+
+    sparkle.style.left =
+        Math.random() * 100 + "vw";
+
+
+    sparkle.style.top =
+        Math.random() * 100 + "vh";
+
+
+    sparkle.style.fontSize =
+        (10 + Math.random() * 14) + "px";
+
+
+    sparkle.style.opacity =
+        "0.8";
+
+
+    sparkle.style.pointerEvents =
+        "none";
+
+
+    sparkle.style.animation =
+        "fadeIn 1s ease";
+
+
+    particles.appendChild(sparkle);
+
+
+    setTimeout(() => {
+
+        sparkle.remove();
+
+    }, 2000);
+
+}
+
+
+setInterval(createSparkle, 650);
+
+
+/* =====================================================
    ENDING
-========================================= */
+===================================================== */
 
 if (ending) {
 
@@ -1038,10 +1179,10 @@ if (ending) {
 
         <div class="card">
 
-            <div style="
-                font-size:120px;
-                animation:beat 1s infinite;
-            ">
+            <div
+                class="heart"
+                style="font-size:120px;"
+            >
                 ❤️
             </div>
 
@@ -1055,8 +1196,8 @@ if (ending) {
 
             <p>
 
-                Thank you for visiting this
-                little world I created.
+                Thank you for visiting
+                this little world I created.
 
                 <br><br>
 
@@ -1069,6 +1210,8 @@ if (ending) {
                 <br>
 
                 Maybe it's just the beginning.
+
+                <br><br>
 
                 🌹
 
@@ -1095,48 +1238,43 @@ if (ending) {
 }
 
 
-/* =========================================
+/* =====================================================
    RESTART
-========================================= */
+===================================================== */
 
 document.addEventListener("click", (event) => {
 
-    if (event.target.id !== "restartBtn") return;
+    if (event.target.id === "restartBtn") {
 
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-});
-
-
-/* =========================================
-   ESCAPE KEY CLOSES LIGHTBOX
-========================================= */
-
-document.addEventListener("keydown", (event) => {
-
-    if (event.key === "Escape" && lightbox) {
-
-        lightbox.style.display = "none";
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
 
     }
 
 });
 
 
-/* =========================================
-   PAGE LOADED
-========================================= */
+/* =====================================================
+   PREVENT IMAGE DRAGGING
+===================================================== */
 
-window.addEventListener("load", () => {
+document.addEventListener("dragstart", (event) => {
 
-    console.log(
-        "❤️ Love For Halima loaded successfully."
-    );
+    if (event.target.tagName === "IMG") {
+
+        event.preventDefault();
+
+    }
 
 });
+
+
+/* =====================================================
+   CONSOLE
+===================================================== */
+
+console.log(
+    "❤️ Love For Halima loaded successfully."
+);
