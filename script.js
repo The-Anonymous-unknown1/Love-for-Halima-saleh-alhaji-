@@ -1,14 +1,14 @@
-/* =====================================================
+/* =========================================
    LOVE FOR HALIMA
-   Clean script.js
-===================================================== */
+   script.js
+   Clean V4
+========================================= */
 
 "use strict";
 
-
-/* =====================================================
+/* =========================================
    ELEMENTS
-===================================================== */
+========================================= */
 
 const loader = document.getElementById("loader");
 const startExperience = document.getElementById("startExperience");
@@ -29,15 +29,11 @@ const hearts = document.getElementById("hearts");
 const particles = document.getElementById("particles");
 
 
-
-/* =====================================================
+/* =========================================
    MUSIC
-===================================================== */
+========================================= */
 
 let musicPlaying = false;
-
-
-/* Play music */
 
 function playMusic() {
 
@@ -55,14 +51,11 @@ function playMusic() {
         })
         .catch(() => {
 
-            console.log("Music playback was blocked.");
+            console.log("Music requires user interaction.");
 
         });
-
 }
 
-
-/* Pause music */
 
 function pauseMusic() {
 
@@ -78,8 +71,6 @@ function pauseMusic() {
 
 }
 
-
-/* Toggle music */
 
 function toggleMusic() {
 
@@ -103,19 +94,15 @@ if (musicBtn) {
 }
 
 
-/* =====================================================
+/* =========================================
    LOADING SCREEN
-===================================================== */
+========================================= */
 
 if (startExperience) {
 
     startExperience.addEventListener("click", () => {
 
-        /* Start music after user interaction */
         playMusic();
-
-
-        /* Hide loader */
 
         if (loader) {
 
@@ -134,10 +121,9 @@ if (startExperience) {
 }
 
 
-
-/* =====================================================
+/* =========================================
    HERO
-===================================================== */
+========================================= */
 
 if (hero) {
 
@@ -145,16 +131,14 @@ if (hero) {
 
         <div class="card">
 
-            <h3>
-                Made With ❤️
-            </h3>
+            <h3>Made With ❤️</h3>
 
             <h1>
                 For<br>
                 Halima Alhaji Saleh
             </h1>
 
-            <p id="heroTyping"></p>
+            <p id="typing"></p>
 
             <br>
 
@@ -169,70 +153,60 @@ if (hero) {
 }
 
 
-
-/* =====================================================
+/* =========================================
    HERO TYPEWRITER
-===================================================== */
+========================================= */
 
 const heroMessage = `Hello Halima ❤️
 
-I built this little website especially for you.
+I created this little website especially for you.
 
-Every click reveals another piece of my heart.
+Every click reveals another little piece of my heart.
 
-I hope it makes you smile.
+I hope it brings a smile to your face.
 
 — Al-Ameen Umar`;
 
+const typing = document.getElementById("typing");
 
-function typeText(element, text, speed = 40) {
+function typeHero() {
 
-    if (!element) return;
+    if (!typing) return;
 
-    element.innerHTML = "";
+    typing.innerHTML = "";
 
     let index = 0;
 
-
     function write() {
 
-        if (index >= text.length) {
-            return;
-        }
+        if (index >= heroMessage.length) return;
 
+        if (heroMessage[index] === "\n") {
 
-        if (text[index] === "\n") {
-
-            element.innerHTML += "<br>";
+            typing.innerHTML += "<br>";
 
         } else {
 
-            element.innerHTML += text[index];
+            typing.innerHTML += heroMessage[index];
 
         }
 
-
         index++;
 
-        setTimeout(write, speed);
+        setTimeout(write, 40);
 
     }
-
 
     write();
 
 }
 
-
-const heroTyping = document.getElementById("heroTyping");
-
-typeText(heroTyping, heroMessage, 40);
+typeHero();
 
 
-
-/* =====================================================
+/* =========================================
    STORY
-===================================================== */
+========================================= */
 
 if (story) {
 
@@ -240,29 +214,17 @@ if (story) {
 
         <div class="card">
 
-            <h2>
-                🌹 Our Story
-            </h2>
+            <h2>🌹 Our Story</h2>
 
             <p>
 
-                Every beautiful story begins with one hello.
+                Every beautiful story begins with a simple hello.
 
-                <br><br>
+                Sometimes, one person can make ordinary moments
+                feel a little more special.
 
-                Sometimes a simple person entering your life
-                can make ordinary moments feel special.
-
-                <br><br>
-
-                This little website is my way of creating
-                something meaningful for you.
-
-                <br><br>
-
-                I hope every page makes you smile.
-
-                <br><br>
+                This website is a small way of saying that I
+                appreciate the opportunity to know you.
 
                 ❤️
 
@@ -275,42 +237,45 @@ if (story) {
 }
 
 
+/* =========================================
+   NAVIGATION
+========================================= */
 
-/* =====================================================
-   BEGIN STORY BUTTON
-===================================================== */
+function goTo(id) {
+
+    const section = document.getElementById(id);
+
+    if (!section) return;
+
+    section.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
 
 document.addEventListener("click", (event) => {
 
     if (event.target.id === "beginStory") {
 
-        if (story) {
-
-            story.scrollIntoView({
-                behavior: "smooth"
-            });
-
-        }
+        goTo("story");
 
     }
 
 });
 
 
-
-/* =====================================================
+/* =========================================
    FLOATING HEARTS
-===================================================== */
+========================================= */
 
 function createHeart() {
 
     if (!hearts) return;
 
-
     const heart = document.createElement("div");
 
     heart.textContent = "❤️";
-
 
     heart.style.position = "absolute";
 
@@ -320,19 +285,15 @@ function createHeart() {
     heart.style.top = "100vh";
 
     heart.style.fontSize =
-        18 + Math.random() * 22 + "px";
+        18 + Math.random() * 20 + "px";
 
     heart.style.opacity =
         0.4 + Math.random() * 0.6;
 
-    heart.style.pointerEvents = "none";
-
     heart.style.transition =
         "transform 8s linear, opacity 8s linear";
 
-
     hearts.appendChild(heart);
-
 
     requestAnimationFrame(() => {
 
@@ -343,7 +304,6 @@ function createHeart() {
 
     });
 
-
     setTimeout(() => {
 
         heart.remove();
@@ -352,16 +312,16 @@ function createHeart() {
 
 }
 
-
-setInterval(createHeart, 450);
-
+setInterval(createHeart, 500);
 
 
-/* =====================================================
+/* =========================================
    SPARKLES
-===================================================== */
+========================================= */
 
 function createSparkle() {
+
+    if (!particles) return;
 
     const sparkle = document.createElement("div");
 
@@ -382,11 +342,19 @@ function createSparkle() {
 
     sparkle.style.pointerEvents = "none";
 
-    sparkle.style.zIndex = "1";
+    sparkle.style.transition =
+        "opacity 2s, transform 2s";
 
+    particles.appendChild(sparkle);
 
-    document.body.appendChild(sparkle);
+    requestAnimationFrame(() => {
 
+        sparkle.style.opacity = "0";
+
+        sparkle.style.transform =
+            "scale(1.8)";
+
+    });
 
     setTimeout(() => {
 
@@ -396,14 +364,12 @@ function createSparkle() {
 
 }
 
-
 setInterval(createSparkle, 700);
 
 
-
-/* =====================================================
+/* =========================================
    LOVE LETTER
-===================================================== */
+========================================= */
 
 if (letter) {
 
@@ -411,32 +377,24 @@ if (letter) {
 
         <div class="card">
 
-            <h2>
-                💌 A Letter For You
-            </h2>
+            <h2>💌 A Letter For You</h2>
 
-            <div
-                id="envelope"
-                style="
-                    font-size:100px;
-                    cursor:pointer;
-                "
-            >
+            <div id="envelope"
+                 style="font-size:100px;cursor:pointer;">
+
                 📩
+
             </div>
 
-
-            <div
-                id="letterBox"
-                style="display:none;"
-            >
+            <div id="letterBox"
+                 style="display:none;">
 
                 <p id="letterText"></p>
 
                 <br>
 
                 <button id="galleryBtn">
-                    Continue ❤️
+                    Our Memories ❤️
                 </button>
 
             </div>
@@ -448,35 +406,14 @@ if (letter) {
 }
 
 
+const envelope =
+    document.getElementById("envelope");
 
-/* =====================================================
-   LETTER TYPEWRITER
-===================================================== */
+const letterBox =
+    document.getElementById("letterBox");
 
-const envelope = document.getElementById("envelope");
-const letterBox = document.getElementById("letterBox");
-const letterText = document.getElementById("letterText");
-
-
-const loveLetter = `Dear Halima,
-
-Thank you for taking the time to visit this little website.
-
-I didn't want to give you something ordinary.
-
-I wanted to create something that would always remind you
-that you are worth time, effort, and creativity.
-
-Every page was made with sincerity.
-
-I hope it brings a beautiful smile to your face.
-
-❤️
-
-With respect and admiration,
-
-Al-Ameen Umar`;
-
+const letterText =
+    document.getElementById("letterText");
 
 if (envelope) {
 
@@ -484,55 +421,198 @@ if (envelope) {
 
         envelope.style.display = "none";
 
-
         if (letterBox) {
-
             letterBox.style.display = "block";
+        }
+
+        if (!letterText) return;
+
+        const letterMessage = `Dear Halima,
+
+Thank you for taking the time to explore this little website.
+
+I didn't want to give you something ordinary.
+
+I wanted to create something that would always remind you that you are appreciated.
+
+Every page was created with sincerity, time, effort, and a little bit of my heart.
+
+I hope it brings a smile to your face.
+
+❤️
+
+With respect and admiration,
+
+Al-Ameen Umar`;
+
+        let index = 0;
+
+        function writeLetter() {
+
+            if (index >= letterMessage.length) return;
+
+            if (letterMessage[index] === "\n") {
+
+                letterText.innerHTML += "<br>";
+
+            } else {
+
+                letterText.innerHTML +=
+                    letterMessage[index];
+
+            }
+
+            index++;
+
+            setTimeout(writeLetter, 30);
 
         }
 
-
-        if (letterText) {
-
-            typeText(
-                letterText,
-                loveLetter,
-                30
-            );
-
-        }
+        writeLetter();
 
     });
 
 }
 
 
+/* =========================================
+   GALLERY
+========================================= */
 
-/* =====================================================
-   GALLERY CONTINUE
-===================================================== */
+if (gallery) {
+
+    gallery.innerHTML = `
+
+        <h2 class="gallery-title">
+            📸 Our Beautiful Memories
+        </h2>
+
+        <p class="gallery-subtitle">
+
+            Every picture tells another chapter
+            of this little story. ❤️
+
+        </p>
+
+        <div class="gallery-grid">
+
+            <div class="gallery-card">
+                <img src="assets/images/Love1.jpg"
+                     alt="Love 1">
+                <div class="overlay">
+                    🌹 A beautiful beginning.
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="assets/images/Love2.jpg"
+                     alt="Love 2">
+                <div class="overlay">
+                    🌙 Every moment can become a memory.
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="assets/images/Love3.jpg"
+                     alt="Love 3">
+                <div class="overlay">
+                    💖 Small moments, lasting memories.
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="assets/images/Love4.png"
+                     alt="Love 4">
+                <div class="overlay">
+                    ✨ Every journey starts somewhere.
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="assets/images/Love5.jpg"
+                     alt="Love 5">
+                <div class="overlay">
+                    🌸 Keep smiling.
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="assets/images/Love6.jpg"
+                     alt="Love 6">
+                <div class="overlay">
+                    💞 Beautiful moments are worth remembering.
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="assets/images/Love7.jpg"
+                     alt="Love 7">
+                <div class="overlay">
+                    🌹 A favorite chapter.
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="assets/images/Love8.jpg"
+                     alt="Love 8">
+                <div class="overlay">
+                    ❤️ Written with the heart.
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="assets/images/Love9.jpg"
+                     alt="Love 9">
+                <div class="overlay">
+                    💝 Another beautiful memory.
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="assets/images/Love10.png"
+                     alt="Love 10">
+                <div class="overlay">
+                    💍 Maybe this is only the beginning.
+                </div>
+            </div>
+
+        </div>
+
+        <br><br>
+
+        <button id="reasonBtn">
+            Continue ❤️
+        </button>
+
+    `;
+
+}
+
+
+/* =========================================
+   GALLERY BUTTON
+========================================= */
 
 document.addEventListener("click", (event) => {
 
     if (event.target.id === "galleryBtn") {
 
-        if (gallery) {
+        goTo("gallery");
 
-            gallery.scrollIntoView({
-                behavior: "smooth"
-            });
+    }
 
-        }
+    if (event.target.id === "reasonBtn") {
+
+        goTo("reasons");
 
     }
 
 });
 
 
-
-/* =====================================================
-   GALLERY LIGHTBOX
-===================================================== */
+/* =========================================
+   LIGHTBOX
+========================================= */
 
 const lightbox =
     document.getElementById("lightbox");
@@ -544,48 +624,32 @@ const closeBtn =
     document.getElementById("close");
 
 
-document.querySelectorAll(".gallery img")
-    .forEach((image) => {
+document.addEventListener("click", (event) => {
 
-        image.addEventListener("click", () => {
+    const image =
+        event.target.closest(".gallery img, .gallery-card img");
 
-            if (!lightbox || !lightboxImg) {
-                return;
-            }
+    if (!image) return;
 
+    if (!lightbox || !lightboxImg) return;
 
-            lightbox.style.display = "flex";
+    lightbox.style.display = "flex";
 
-            lightboxImg.src = image.src;
+    lightboxImg.src = image.src;
 
-            lightboxImg.alt =
-                image.alt || "Love Memory";
+});
 
-        });
-
-    });
-
-
-
-/* Close button */
 
 if (closeBtn) {
 
     closeBtn.addEventListener("click", () => {
 
-        if (lightbox) {
-
-            lightbox.style.display = "none";
-
-        }
+        lightbox.style.display = "none";
 
     });
 
 }
 
-
-
-/* Close by clicking background */
 
 if (lightbox) {
 
@@ -602,10 +666,9 @@ if (lightbox) {
 }
 
 
-
-/* =====================================================
+/* =========================================
    REASONS
-===================================================== */
+========================================= */
 
 if (reasons) {
 
@@ -613,9 +676,7 @@ if (reasons) {
 
         <div class="card">
 
-            <h2>
-                💖 Things I Admire About You
-            </h2>
+            <h2>💖 Things I Admire About You</h2>
 
             <p>
 
@@ -627,11 +688,11 @@ if (reasons) {
 
                 <br><br>
 
-                🌹 Your confidence.
+                🌹 Your strength.
 
                 <br><br>
 
-                🌹 The happiness you bring.
+                🌹 The way you make moments special.
 
                 <br><br>
 
@@ -652,32 +713,9 @@ if (reasons) {
 }
 
 
-
-/* =====================================================
-   GO TO SURPRISE
-===================================================== */
-
-document.addEventListener("click", (event) => {
-
-    if (event.target.id === "surpriseBtn") {
-
-        if (surprise) {
-
-            surprise.scrollIntoView({
-                behavior: "smooth"
-            });
-
-        }
-
-    }
-
-});
-
-
-
-/* =====================================================
+/* =========================================
    SURPRISE
-===================================================== */
+========================================= */
 
 if (surprise) {
 
@@ -685,51 +723,38 @@ if (surprise) {
 
         <div class="card">
 
-            <h2>
-                🎁 One Last Surprise
-            </h2>
+            <h2>🎁 One Last Surprise</h2>
 
+            <div id="giftBox"
+                 style="font-size:120px;cursor:pointer;">
 
-            <div
-                id="giftBox"
-                style="
-                    font-size:120px;
-                    cursor:pointer;
-                "
-            >
                 🎁
+
             </div>
 
-
-            <div
-                id="giftMessage"
-                style="display:none;"
-            >
+            <div id="giftMessage"
+                 style="display:none;">
 
                 <h2>
-                    Dear Halima ❤️
+                    ❤️ Dear Halima ❤️
                 </h2>
 
                 <p>
 
                     Thank you for taking this journey
-                    through this little world I created.
+                    through this little website.
 
                     <br><br>
 
                     It isn't about expensive gifts.
 
-                    <br><br>
-
-                    Sometimes the greatest gift is simply
-                    showing someone that they are worth
-                    your time, effort, and creativity.
+                    It's about showing that someone is
+                    worth time, effort, and creativity.
 
                     <br><br>
 
-                    I'm grateful our paths crossed.
-
-                    <br><br>
+                    I hope this little surprise
+                    makes you smile.
 
                     ❤️
 
@@ -750,59 +775,47 @@ if (surprise) {
 }
 
 
-
-/* =====================================================
-   GIFT OPEN
-===================================================== */
+/* =========================================
+   SURPRISE EVENTS
+========================================= */
 
 document.addEventListener("click", (event) => {
+
+    if (event.target.id === "surpriseBtn") {
+
+        goTo("surprise");
+
+    }
+
 
     if (event.target.id === "giftBox") {
 
-        const giftMessage =
-            document.getElementById("giftMessage");
-
-
         event.target.style.display = "none";
 
+        const message =
+            document.getElementById("giftMessage");
 
-        if (giftMessage) {
+        if (message) {
 
-            giftMessage.style.display = "block";
+            message.style.display = "block";
 
         }
 
     }
 
-});
-
-
-
-/* =====================================================
-   FINAL QUESTION BUTTON
-===================================================== */
-
-document.addEventListener("click", (event) => {
 
     if (event.target.id === "loveGameBtn") {
 
-        if (question) {
-
-            question.scrollIntoView({
-                behavior: "smooth"
-            });
-
-        }
+        goTo("question");
 
     }
 
 });
 
 
-
-/* =====================================================
+/* =========================================
    LOVE QUESTION
-===================================================== */
+========================================= */
 
 if (question) {
 
@@ -818,7 +831,6 @@ if (question) {
                 Do you love me? ❤️
             </h1>
 
-
             <div id="buttons">
 
                 <button id="yesBtn">
@@ -831,7 +843,6 @@ if (question) {
 
             </div>
 
-
             <p id="answer"></p>
 
         </div>
@@ -841,13 +852,11 @@ if (question) {
 }
 
 
+/* =========================================
+   NO BUTTON
+========================================= */
 
-/* =====================================================
-   RUN-AWAY NO BUTTON
-===================================================== */
-
-let yesScale = 1;
-
+let noMoveCount = 0;
 
 document.addEventListener("mousemove", (event) => {
 
@@ -863,19 +872,10 @@ document.addEventListener("mousemove", (event) => {
     const answer =
         document.getElementById("answer");
 
-
-    if (
-        !noBtn ||
-        !yesBtn ||
-        !buttons
-    ) {
-        return;
-    }
-
+    if (!noBtn || !yesBtn || !buttons) return;
 
     const rect =
         noBtn.getBoundingClientRect();
-
 
     const centerX =
         rect.left + rect.width / 2;
@@ -883,73 +883,69 @@ document.addEventListener("mousemove", (event) => {
     const centerY =
         rect.top + rect.height / 2;
 
-
-    const distanceX =
-        event.clientX - centerX;
-
-    const distanceY =
-        event.clientY - centerY;
-
-
     const distance =
         Math.sqrt(
-            distanceX * distanceX +
-            distanceY * distanceY
+            Math.pow(event.clientX - centerX, 2) +
+            Math.pow(event.clientY - centerY, 2)
         );
 
+    /* Keep at least 70px away */
 
-    if (distance < 75) {
+    if (distance < 70) {
 
         const maxX =
-            buttons.clientWidth -
-            noBtn.offsetWidth;
+            Math.max(
+                0,
+                buttons.clientWidth - noBtn.offsetWidth
+            );
 
         const maxY =
-            buttons.clientHeight -
-            noBtn.offsetHeight;
-
+            Math.max(
+                0,
+                buttons.clientHeight - noBtn.offsetHeight
+            );
 
         noBtn.style.left =
-            Math.random() * Math.max(0, maxX) + "px";
+            Math.random() * maxX + "px";
 
         noBtn.style.top =
-            Math.random() * Math.max(0, maxY) + "px";
+            Math.random() * maxY + "px";
 
+        noMoveCount++;
 
-        yesScale =
-            Math.min(2.2, yesScale + 0.1);
-
+        const scale =
+            Math.min(
+                2,
+                1 + noMoveCount * 0.08
+            );
 
         yesBtn.style.transform =
-            `scale(${yesScale})`;
-
+            `scale(${scale})`;
 
         const replies = [
 
             "🥺 Are you sure?",
 
+            "😢 Think again...",
+
             "😂 Nice try!",
 
-            "❤️ Click YES instead!",
+            "❤️ Try YES instead!",
 
-            "🌹 Nope!",
+            "🌹 You almost got it!",
 
-            "😜 I'm too fast!",
+            "😜 I'm faster than you!",
 
-            "🥹 Pleaseeeee...",
-
-            "💖 You almost got it!"
+            "🥹 Pleaseeeee..."
 
         ];
-
 
         if (answer) {
 
             answer.textContent =
                 replies[
                     Math.floor(
-                        Math.random() *
-                        replies.length
+                        Math.random() * replies.length
                     )
                 ];
 
@@ -960,97 +956,16 @@ document.addEventListener("mousemove", (event) => {
 });
 
 
-
-/* =====================================================
-   MOBILE NO BUTTON
-===================================================== */
-
-document.addEventListener("touchstart", (event) => {
-
-    const noBtn =
-        document.getElementById("noBtn");
-
-    const yesBtn =
-        document.getElementById("yesBtn");
-
-    const buttons =
-        document.getElementById("buttons");
-
-    const answer =
-        document.getElementById("answer");
-
-
-    if (
-        !noBtn ||
-        !yesBtn ||
-        !buttons
-    ) {
-        return;
-    }
-
-
-    if (
-        event.target !== noBtn
-    ) {
-        return;
-    }
-
-
-    const maxX =
-        buttons.clientWidth -
-        noBtn.offsetWidth;
-
-    const maxY =
-        buttons.clientHeight -
-        noBtn.offsetHeight;
-
-
-    noBtn.style.left =
-        Math.random() *
-        Math.max(0, maxX) + "px";
-
-
-    noBtn.style.top =
-        Math.random() *
-        Math.max(0, maxY) + "px";
-
-
-    yesScale =
-        Math.min(2.2, yesScale + 0.1);
-
-
-    yesBtn.style.transform =
-        `scale(${yesScale})`;
-
-
-    if (answer) {
-
-        answer.textContent =
-            "😂 Nice try! ❤️";
-
-    }
-
-});
-
-
-
-/* =====================================================
+/* =========================================
    YES BUTTON
-===================================================== */
+========================================= */
 
 document.addEventListener("click", (event) => {
 
-    if (event.target.id !== "yesBtn") {
-        return;
-    }
-
-
-    heartConfetti();
-
+    if (event.target.id !== "yesBtn") return;
 
     const answer =
         document.getElementById("answer");
-
 
     if (answer) {
 
@@ -1071,9 +986,11 @@ document.addEventListener("click", (event) => {
 
                 <br><br>
 
-                I hope every smile you had
-                while exploring this website
-                was real.
+                Love,
+
+                <br>
+
+                <b>Al-Ameen Umar</b>
 
             </p>
 
@@ -1081,113 +998,39 @@ document.addEventListener("click", (event) => {
 
     }
 
+    heartConfetti();
 
     setTimeout(() => {
 
-        if (ending) {
+        goTo("ending");
 
-            ending.scrollIntoView({
-                behavior: "smooth"
-            });
-
-        }
-
-    }, 1500);
+    }, 1800);
 
 });
 
 
-
-/* =====================================================
+/* =========================================
    HEART CONFETTI
-===================================================== */
+========================================= */
 
 function heartConfetti() {
 
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 50; i++) {
 
         setTimeout(() => {
 
-            createConfettiHeart();
+            createHeart();
 
-        }, i * 35);
+        }, i * 40);
 
     }
 
 }
 
 
-function createConfettiHeart() {
-
-    const heart =
-        document.createElement("div");
-
-
-    heart.textContent =
-        ["❤️", "💖", "💕", "💗", "💓", "💞"][
-            Math.floor(
-                Math.random() * 6
-            )
-        ];
-
-
-    heart.style.position =
-        "fixed";
-
-
-    heart.style.left =
-        Math.random() * 100 + "vw";
-
-
-    heart.style.top =
-        "-30px";
-
-
-    heart.style.fontSize =
-        18 + Math.random() * 25 + "px";
-
-
-    heart.style.pointerEvents =
-        "none";
-
-
-    heart.style.zIndex =
-        "99999";
-
-
-    heart.style.transition =
-        "transform 4s linear, opacity 4s linear";
-
-
-    document.body.appendChild(heart);
-
-
-    requestAnimationFrame(() => {
-
-        heart.style.transform =
-            `translateY(${window.innerHeight + 100}px)
-             rotate(${Math.random() * 720}deg)`;
-
-
-        heart.style.opacity =
-            "0";
-
-    });
-
-
-    setTimeout(() => {
-
-        heart.remove();
-
-    }, 4500);
-
-}
-
-
-
-/* =====================================================
+/* =========================================
    ENDING
-===================================================== */
+========================================= */
 
 if (ending) {
 
@@ -1195,30 +1038,25 @@ if (ending) {
 
         <div class="card">
 
-            <div
-                style="
-                    font-size:120px;
-                    animation:beat 1s infinite;
-                "
-            >
+            <div style="
+                font-size:120px;
+                animation:beat 1s infinite;
+            ">
                 ❤️
             </div>
-
 
             <h1>
                 Thank You ❤️
             </h1>
 
-
             <h2>
                 Halima Alhaji Saleh
             </h2>
 
-
             <p>
 
-                Thank you for visiting
-                this little world I created.
+                Thank you for visiting this
+                little world I created.
 
                 <br><br>
 
@@ -1228,29 +1066,23 @@ if (ending) {
 
                 Maybe this isn't the end...
 
-                <br><br>
+                <br>
 
                 Maybe it's just the beginning.
-
-                <br><br>
 
                 🌹
 
                 <br><br>
 
-                With love,
+                Love,
 
                 <br>
 
-                <b>
-                    Al-Ameen Umar
-                </b>
+                <b>Al-Ameen Umar</b>
 
             </p>
 
-
             <br>
-
 
             <button id="restartBtn">
                 Back To The Beginning 🌹
@@ -1263,39 +1095,32 @@ if (ending) {
 }
 
 
-
-/* =====================================================
+/* =========================================
    RESTART
-===================================================== */
+========================================= */
 
 document.addEventListener("click", (event) => {
 
-    if (event.target.id === "restartBtn") {
+    if (event.target.id !== "restartBtn") return;
 
-        window.scrollTo({
+    window.scrollTo({
 
-            top: 0,
+        top: 0,
 
-            behavior: "smooth"
+        behavior: "smooth"
 
-        });
-
-    }
+    });
 
 });
 
 
-
-/* =====================================================
-   KEYBOARD LIGHTBOX CLOSE
-===================================================== */
+/* =========================================
+   ESCAPE KEY CLOSES LIGHTBOX
+========================================= */
 
 document.addEventListener("keydown", (event) => {
 
-    if (
-        event.key === "Escape" &&
-        lightbox
-    ) {
+    if (event.key === "Escape" && lightbox) {
 
         lightbox.style.display = "none";
 
@@ -1304,15 +1129,14 @@ document.addEventListener("keydown", (event) => {
 });
 
 
+/* =========================================
+   PAGE LOADED
+========================================= */
 
-/* =====================================================
-   PAGE READY
-===================================================== */
+window.addEventListener("load", () => {
 
-console.log(
-    "❤️ Love For Halima loaded successfully."
-);
+    console.log(
+        "❤️ Love For Halima loaded successfully."
+    );
 
-console.log(
-    "Made by Al-Ameen Umar (ANSIT)"
-);
+});
