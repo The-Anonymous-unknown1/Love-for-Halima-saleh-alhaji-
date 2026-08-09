@@ -15,63 +15,46 @@ html {
 
 body {
     min-height: 100vh;
-    overflow-x: hidden;
     background: #070312;
-    color: #ffffff;
+    color: #fff;
     font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
 }
 
 /* =========================================
-   BACKGROUND STARS
+   BACKGROUND
 ========================================= */
 
 #stars {
     position: fixed;
     inset: 0;
-    z-index: -5;
+    z-index: -3;
     pointer-events: none;
 
     background-image:
-        radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,180,220,.7) 1px, transparent 1px);
+        radial-gradient(#fff 1px, transparent 1px),
+        radial-gradient(#ffd7ef 1px, transparent 1px);
 
-    background-size: 80px 80px, 120px 120px;
+    background-size: 80px 80px;
     background-position: 0 0, 40px 40px;
 
-    animation: starsMove 100s linear infinite;
-    opacity: .55;
+    opacity: 0.55;
+
+    animation: starsMove 120s linear infinite;
 }
 
-@keyframes starsMove {
-    from {
-        background-position: 0 0, 40px 40px;
-    }
-
-    to {
-        background-position: 0 2000px, 40px 2040px;
-    }
-}
-
-/* =========================================
-   FLOATING HEARTS
-========================================= */
-
-#hearts {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: -2;
-}
-
-/* =========================================
-   PARTICLES
-========================================= */
-
+#hearts,
 #particles {
     position: fixed;
     inset: 0;
     pointer-events: none;
+}
+
+#hearts {
+    z-index: -2;
+}
+
+#particles {
     z-index: -1;
 }
 
@@ -95,38 +78,26 @@ section {
 
 .card {
     width: 100%;
-    max-width: 900px;
+    max-width: 850px;
 
     padding: 45px;
 
-    text-align: center;
+    border-radius: 28px;
 
-    border-radius: 30px;
-
-    background: rgba(255,255,255,.08);
-
-    border: 1px solid rgba(255,255,255,.15);
+    background: rgba(255, 255, 255, 0.08);
 
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
 
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
     box-shadow:
-        0 0 30px rgba(255,20,147,.18),
-        inset 0 0 30px rgba(255,255,255,.02);
+        0 0 35px rgba(255, 20, 147, 0.25),
+        inset 0 0 30px rgba(255, 255, 255, 0.03);
+
+    text-align: center;
 
     animation: cardAppear 1s ease;
-}
-
-@keyframes cardAppear {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* =========================================
@@ -136,47 +107,37 @@ section {
 h1 {
     font-family: "Cormorant Garamond", serif;
 
-    font-size: clamp(48px, 8vw, 78px);
+    font-size: 70px;
 
-    line-height: 1.05;
-
-    margin-bottom: 25px;
-
-    color: #ffffff;
+    margin-bottom: 20px;
 
     text-shadow:
-        0 0 10px rgba(255,105,180,.6),
-        0 0 30px rgba(255,20,147,.4);
+        0 0 10px #ff4f91,
+        0 0 25px #ff4f91;
 }
 
 h2 {
-    font-size: clamp(30px, 6vw, 48px);
+    font-size: 45px;
 
     margin-bottom: 25px;
 
     color: #ffd6e8;
 
-    text-shadow: 0 0 15px rgba(255,20,147,.4);
+    text-shadow: 0 0 15px rgba(255, 79, 145, 0.5);
 }
 
 h3 {
-    font-size: 18px;
-
-    font-weight: 400;
+    font-weight: 300;
 
     letter-spacing: 4px;
 
-    color: #ffb6d5;
-
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 p {
-    font-size: 19px;
+    font-size: 20px;
 
     line-height: 1.9;
-
-    color: #f4eaf0;
 }
 
 /* =========================================
@@ -184,74 +145,37 @@ p {
 ========================================= */
 
 button {
-    border: none;
-    outline: none;
+    padding: 16px 40px;
 
-    padding: 16px 38px;
+    border: none;
 
     border-radius: 50px;
 
-    background: linear-gradient(
-        135deg,
-        #ff2d75,
-        #ff5ca8
-    );
+    background: #ff2d75;
 
     color: white;
 
-    font-family: "Poppins", sans-serif;
+    font-size: 18px;
 
-    font-size: 17px;
-    font-weight: 600;
+    font-family: "Poppins", sans-serif;
 
     cursor: pointer;
 
-    box-shadow:
-        0 0 15px rgba(255,20,147,.45),
-        0 0 35px rgba(255,20,147,.15);
+    transition: 0.3s ease;
 
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease,
-        background .3s ease;
+    box-shadow:
+        0 0 20px rgba(255, 45, 117, 0.7);
 }
 
 button:hover {
-    transform: scale(1.07);
+    transform: scale(1.08);
 
     box-shadow:
-        0 0 25px rgba(255,20,147,.7),
-        0 0 50px rgba(255,20,147,.3);
+        0 0 35px rgba(255, 45, 117, 1);
 }
 
 button:active {
-    transform: scale(.96);
-}
-
-/* =========================================
-   MUSIC BUTTON
-========================================= */
-
-#musicBtn {
-    position: fixed;
-
-    top: 20px;
-    right: 20px;
-
-    width: 58px;
-    height: 58px;
-
-    padding: 0;
-
-    border-radius: 50%;
-
-    font-size: 23px;
-
-    z-index: 5000;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    transform: scale(0.96);
 }
 
 /* =========================================
@@ -275,13 +199,13 @@ button:active {
 
     text-align: center;
 
-    padding: 25px;
+    padding: 20px;
 
     background:
         radial-gradient(
             circle at center,
-            #24102d 0%,
-            #090313 55%,
+            #25091c 0%,
+            #09020e 45%,
             #030107 100%
         );
 
@@ -291,43 +215,62 @@ button:active {
 }
 
 #loader h1 {
-    font-size: clamp(42px, 10vw, 70px);
-
     margin-top: 20px;
+
+    font-size: 50px;
+
+    color: #fff;
 }
 
 #loader p {
-    color: #ffd6e8;
+    color: #ffcce0;
 
-    max-width: 500px;
+    margin-top: 10px;
 }
 
 .loader-heart {
     font-size: 90px;
 
-    animation:
-        heartPulse 1.2s infinite ease-in-out;
+    animation: pulse 1.2s infinite;
 
     filter:
-        drop-shadow(0 0 20px hotpink);
-}
-
-@keyframes heartPulse {
-    0%,100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.2);
-    }
+        drop-shadow(0 0 15px #ff4f91)
+        drop-shadow(0 0 30px #ff4f91);
 }
 
 #startExperience {
     margin-top: 30px;
 
-    font-size: 18px;
+    padding: 18px 40px;
 
-    padding: 17px 38px;
+    font-size: 21px;
+}
+
+/* =========================================
+   MUSIC BUTTON
+========================================= */
+
+#musicBtn {
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    width: 58px;
+    height: 58px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    font-size: 24px;
+
+    z-index: 5000;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
 }
 
 /* =========================================
@@ -335,78 +278,57 @@ button:active {
 ========================================= */
 
 #hero {
-    text-align: center;
+    position: relative;
 }
 
-#typing {
-    min-height: 170px;
-
-    white-space: normal;
-
-    color: #ffe8f2;
+#hero .card {
+    max-width: 900px;
 }
 
 /* =========================================
    STORY
 ========================================= */
 
-#story {
-    text-align: center;
+#story .card {
+    max-width: 850px;
 }
 
 /* =========================================
    LOVE LETTER
 ========================================= */
 
-#letter {
-    text-align: center;
+#letter .card {
+    max-width: 850px;
 }
 
 #envelope {
     display: inline-block;
 
-    margin: 25px 0;
-
     font-size: 110px;
 
     cursor: pointer;
 
-    filter:
-        drop-shadow(0 0 20px rgba(255,20,147,.6));
+    user-select: none;
 
-    transition: transform .4s ease;
+    transition: 0.4s;
+
+    animation: envelopeFloat 2s ease-in-out infinite;
 }
 
 #envelope:hover {
-    transform:
-        scale(1.15)
-        rotate(-5deg);
+    transform: scale(1.15) rotate(-5deg);
 }
 
 #letterBox {
-    animation: fadeIn 1s ease;
+    animation: fadeIn 0.8s ease;
 }
 
 #letterText {
     text-align: left;
 
-    max-width: 750px;
-
-    margin: auto;
+    white-space: normal;
 
     color: #fff0f6;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* =========================================
@@ -416,30 +338,32 @@ button:active {
 #gallery {
     display: block;
 
-    text-align: center;
+    min-height: auto;
 
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding: 100px 25px;
 }
 
 .gallery-title {
-    font-size: clamp(35px, 7vw, 58px);
+    text-align: center;
 
-    color: #ff76ae;
+    font-size: 55px;
 
-    margin-bottom: 15px;
+    color: #ff6fa8;
+
+    margin-bottom: 20px;
 }
 
 .gallery-subtitle {
-    max-width: 700px;
-
-    margin: 0 auto 50px;
+    text-align: center;
 
     color: #ddd;
+
+    margin-bottom: 55px;
 }
 
 .gallery {
     width: 100%;
+
     max-width: 1400px;
 
     margin: auto;
@@ -447,14 +371,12 @@ button:active {
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(250px, 1fr));
+        repeat(auto-fit, minmax(260px, 1fr));
 
-    gap: 25px;
+    gap: 30px;
 }
 
-/* =========================================
-   GALLERY CARD
-========================================= */
+/* Gallery card */
 
 .gallery .card {
     position: relative;
@@ -463,48 +385,45 @@ button:active {
 
     padding: 0;
 
-    height: 350px;
+    min-height: 350px;
 
     overflow: hidden;
 
-    border-radius: 25px;
-
     cursor: pointer;
 
-    background: #120817;
+    border-radius: 25px;
 
-    border: 1px solid rgba(255,255,255,.1);
+    background: rgba(255, 255, 255, 0.06);
 
-    transition:
-        transform .4s ease,
-        box-shadow .4s ease;
-}
-
-.gallery .card:hover {
-    transform: translateY(-8px);
+    transition: 0.5s ease;
 
     box-shadow:
-        0 0 35px rgba(255,20,147,.5);
+        0 0 25px rgba(255, 105, 180, 0.2);
 }
 
-.gallery img {
-    width: 100%;
-    height: 100%;
-
+.gallery .card img {
     display: block;
+
+    width: 100%;
+    height: 350px;
 
     object-fit: cover;
 
-    transition: transform .6s ease;
+    transition: 0.6s ease;
 }
 
 .gallery .card:hover img {
     transform: scale(1.1);
 }
 
-/* =========================================
-   IMAGE OVERLAY
-========================================= */
+.gallery .card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 0 45px rgba(255, 20, 147, 0.7);
+}
+
+/* Gallery overlay */
 
 .overlay {
     position: absolute;
@@ -514,12 +433,12 @@ button:active {
 
     width: 100%;
 
-    padding: 25px 15px 20px;
+    padding: 25px 18px;
 
     background:
         linear-gradient(
             transparent,
-            rgba(0,0,0,.9)
+            rgba(0, 0, 0, 0.9)
         );
 
     color: white;
@@ -528,11 +447,9 @@ button:active {
 
     opacity: 0;
 
-    transform: translateY(10px);
+    transform: translateY(20px);
 
-    transition:
-        opacity .4s ease,
-        transform .4s ease;
+    transition: 0.4s ease;
 }
 
 .gallery .card:hover .overlay {
@@ -542,17 +459,25 @@ button:active {
 }
 
 /* =========================================
+   GALLERY CONTINUE BUTTON
+========================================= */
+
+#reasonBtn {
+    display: block;
+
+    margin: 45px auto 0;
+}
+
+/* =========================================
    REASONS
 ========================================= */
 
-#reasons {
-    text-align: center;
+#reasons .card {
+    max-width: 800px;
 }
 
-#reasons .card p {
-    max-width: 700px;
-
-    margin: auto;
+#reasons p {
+    color: #ffe8f1;
 }
 
 /* =========================================
@@ -566,24 +491,27 @@ button:active {
 #giftBox {
     display: inline-block;
 
-    margin: 25px 0;
-
     font-size: 120px;
 
     cursor: pointer;
 
-    filter:
-        drop-shadow(0 0 25px rgba(255,20,147,.5));
+    user-select: none;
 
-    transition: transform .4s ease;
+    animation: giftFloat 2s ease-in-out infinite;
+
+    transition: 0.4s;
 }
 
 #giftBox:hover {
-    transform: scale(1.15) rotate(5deg);
+    transform: scale(1.15);
 }
 
 #giftMessage {
     animation: fadeIn 1s ease;
+}
+
+#loveGameBtn {
+    margin-top: 25px;
 }
 
 /* =========================================
@@ -597,65 +525,61 @@ button:active {
 }
 
 #question .card {
-    overflow: visible;
+    max-width: 850px;
+}
+
+#question h1 {
+    font-size: 60px;
 }
 
 #buttons {
     position: relative;
 
     width: 340px;
+
     height: 190px;
 
-    max-width: 100%;
-
-    margin: 40px auto;
+    margin: 45px auto;
 }
 
 #yesBtn,
 #noBtn {
     position: absolute;
 
-    padding: 16px 32px;
+    padding: 17px 35px;
 
-    font-size: 19px;
+    font-size: 20px;
 
     white-space: nowrap;
 }
 
 #yesBtn {
-    left: 30px;
-    top: 65px;
+    left: 20px;
+    top: 60px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #ff1f68,
-            #ff66aa
-        );
+    background: #ff4f91;
 }
 
 #noBtn {
     left: 190px;
-    top: 65px;
+    top: 60px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #444,
-            #222
-        );
+    background: #444;
 
-    box-shadow: none;
+    transition:
+        left 0.15s ease,
+        top 0.15s ease,
+        transform 0.3s ease;
 }
 
 #answer {
     min-height: 50px;
 
-    margin-top: 25px;
+    margin-top: 30px;
 
-    color: #ff76ae;
+    font-size: 26px;
 
-    font-size: 24px;
+    color: #ff6fa8;
 
     font-weight: 600;
 }
@@ -664,41 +588,24 @@ button:active {
    ENDING
 ========================================= */
 
-#ending {
-    text-align: center;
+#ending .card {
+    max-width: 850px;
 }
 
-#ending .card {
-    position: relative;
+#ending h1 {
+    font-size: 65px;
 }
 
 #ending h2 {
-    color: #ffb7d3;
+    color: #ffb6d2;
 }
 
 #ending p {
-    max-width: 700px;
-
-    margin: auto;
+    color: #ffe9f2;
 }
 
-#ending .heart {
-    font-size: 120px;
-
-    animation: beat 1s infinite;
-
-    filter:
-        drop-shadow(0 0 25px hotpink);
-}
-
-@keyframes beat {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.15);
-    }
+#restartBtn {
+    margin-top: 25px;
 }
 
 /* =========================================
@@ -706,26 +613,25 @@ button:active {
 ========================================= */
 
 #lightbox {
+    display: none;
+
     position: fixed;
 
     inset: 0;
 
     z-index: 99998;
 
-    display: none;
-
     justify-content: center;
     align-items: center;
 
-    padding: 20px;
+    padding: 30px;
 
-    background: rgba(0,0,0,.95);
-
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.95);
 }
 
 #lightbox img {
-    max-width: 92%;
+    max-width: 92vw;
+
     max-height: 88vh;
 
     object-fit: contain;
@@ -733,21 +639,9 @@ button:active {
     border-radius: 20px;
 
     box-shadow:
-        0 0 40px rgba(255,20,147,.5);
+        0 0 40px rgba(255, 20, 147, 0.7);
 
-    animation: lightboxZoom .4s ease;
-}
-
-@keyframes lightboxZoom {
-    from {
-        opacity: 0;
-        transform: scale(.7);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    animation: zoomIn 0.4s ease;
 }
 
 #close {
@@ -758,13 +652,13 @@ button:active {
 
     font-size: 55px;
 
-    line-height: 1;
-
     color: white;
 
     cursor: pointer;
 
-    transition: .3s;
+    line-height: 1;
+
+    transition: 0.3s;
 }
 
 #close:hover {
@@ -778,20 +672,115 @@ button:active {
 ========================================= */
 
 footer {
-    padding: 50px 20px;
-
     text-align: center;
 
-    background: rgba(0,0,0,.25);
-
-    border-top:
-        1px solid rgba(255,255,255,.08);
+    padding: 60px 20px;
 
     color: #ffd6e8;
+
+    background: rgba(0, 0, 0, 0.25);
 }
 
 footer p {
     font-size: 16px;
+
+    line-height: 1.8;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+@keyframes beat {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+@keyframes starsMove {
+    from {
+        background-position:
+            0 0,
+            40px 40px;
+    }
+
+    to {
+        background-position:
+            0 2500px,
+            40px 2540px;
+    }
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes envelopeFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes giftFloat {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(3deg);
+    }
 }
 
 /* =========================================
@@ -811,33 +800,53 @@ footer p {
     }
 
     h1 {
-        font-size: 46px;
+        font-size: 48px;
     }
 
     h2 {
         font-size: 32px;
     }
 
-    p {
-        font-size: 17px;
+    h3 {
+        font-size: 15px;
+
+        letter-spacing: 2px;
     }
 
-    #musicBtn {
-        width: 52px;
-        height: 52px;
+    p {
+        font-size: 17px;
 
-        top: 15px;
-        right: 15px;
+        line-height: 1.8;
+    }
+
+    #loader h1 {
+        font-size: 40px;
+    }
+
+    .loader-heart {
+        font-size: 75px;
+    }
+
+    .gallery-title {
+        font-size: 38px;
+    }
+
+    .gallery-subtitle {
+        font-size: 17px;
     }
 
     .gallery {
         grid-template-columns: 1fr;
 
-        gap: 20px;
+        gap: 22px;
     }
 
     .gallery .card {
-        height: 330px;
+        min-height: 320px;
+    }
+
+    .gallery .card img {
+        height: 320px;
     }
 
     .overlay {
@@ -848,16 +857,37 @@ footer p {
         font-size: 16px;
     }
 
+    #question h1 {
+        font-size: 42px;
+    }
+
     #buttons {
         width: 300px;
+
+        height: 200px;
+    }
+
+    #yesBtn,
+    #noBtn {
+        font-size: 18px;
+
+        padding: 15px 28px;
     }
 
     #yesBtn {
-        left: 15px;
+        left: 10px;
     }
 
     #noBtn {
-        left: 160px;
+        left: 165px;
+    }
+
+    #musicBtn {
+        width: 52px;
+        height: 52px;
+
+        top: 15px;
+        right: 15px;
     }
 
     #close {
@@ -865,10 +895,6 @@ footer p {
         right: 20px;
 
         font-size: 45px;
-    }
-
-    #letterText {
-        text-align: left;
     }
 }
 
@@ -887,29 +913,18 @@ footer p {
     }
 
     .card {
-        padding: 25px 15px;
+        padding: 25px 16px;
     }
 
     #buttons {
-        width: 280px;
-    }
-
-    #yesBtn,
-    #noBtn {
-        padding: 14px 25px;
-
-        font-size: 17px;
+        width: 270px;
     }
 
     #yesBtn {
-        left: 5px;
+        left: 0;
     }
 
     #noBtn {
         left: 145px;
-    }
-
-    .loader-heart {
-        font-size: 75px;
     }
 }
