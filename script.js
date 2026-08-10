@@ -129,7 +129,7 @@ if (hero) {
 
             <h1>
                 For<br>
-                Halima Alhaji Saleh
+                Fayrouz 
             </h1>
 
             <p id="typing"></p>
@@ -151,7 +151,7 @@ if (hero) {
    HERO TYPEWRITER
 ===================================================== */
 
-const heroMessage = `Hello Halima ❤️
+const heroMessage = `Hello Fatima ❤️
 
 I created this little website especially for you.
 
@@ -305,7 +305,7 @@ const letterBox = document.getElementById("letterBox");
 const letterText = document.getElementById("letterText");
 
 
-const loveLetter = `Dear Halima,
+const loveLetter = `Dear Fayrouz,
 
 Thank you for taking the time to explore this little surprise.
 
@@ -324,7 +324,7 @@ I hope they remind you of a beautiful moment.
 
 With respect and admiration,
 
-Al-Ameen Umar`;
+Al-Ameen Umar Scroll to next` ;
 
 
 if (envelope) {
@@ -400,7 +400,7 @@ if (gallery) {
             <div class="card">
                 <img src="assets/images/Love2.jpg" alt="Love 2">
                 <div class="overlay">
-                    🌙 Every night reminds me of you.
+                    🌙 Every thing reminds me of you.
                 </div>
             </div>
 
@@ -612,9 +612,9 @@ if (reasons) {
 
             <br>
 
-            <button id="surpriseBtn">
-                One More Surprise 🎁
-            </button>
+           <button id="surpriseBtn">
+             Click For One More Surprise 🎁
+           </button>
 
         </div>
 
@@ -642,7 +642,7 @@ if (surprise) {
             <div id="giftMessage" style="display:none;">
 
                 <h2>
-                    Dear Halima ❤️
+                    Dear A Mamman, ❤️
                 </h2>
 
                 <p>
@@ -744,7 +744,7 @@ if (question) {
             </h2>
 
             <h1>
-                Do you love me? ❤️
+             Fayrouz, Do you love me? ❤️
             </h1>
 
             <div id="buttons">
@@ -972,7 +972,7 @@ document.addEventListener("click", (event) => {
 
                 <br><br>
 
-                Thank you, Halima.
+                Thank you, FATIMA FAYROUZ.
 
                 ❤️
 
@@ -980,7 +980,7 @@ document.addEventListener("click", (event) => {
 
                 Love,
 
-                <b>Al-Ameen Umar</b>
+                <b>Al-Ameen Umar(ANSIT)</b>
 
             </p>
 
@@ -1191,7 +1191,7 @@ if (ending) {
             </h1>
 
             <h2>
-                Halima Alhaji Saleh
+                FATIMA ALHAJI MAMMAN (FAYROUZ)
             </h2>
 
             <p>
@@ -1221,7 +1221,7 @@ if (ending) {
 
                 <br>
 
-                <b>Al-Ameen Umar</b>
+                <b>Al-Ameen Umar Chekene</b>
 
             </p>
 
@@ -1276,5 +1276,5 @@ document.addEventListener("dragstart", (event) => {
 ===================================================== */
 
 console.log(
-    "❤️ Love For Halima loaded successfully."
+    "❤️ Love For Fayrouz loaded successfully."
 );
