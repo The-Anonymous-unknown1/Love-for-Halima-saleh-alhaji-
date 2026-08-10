@@ -1,5 +1,5 @@
 /* =====================================================
-   ❤️ LOVE FOR HALIMA
+   ❤️ LOVE FOR FAYROUZ 
    Premium Romantic Website
    script.js
 ===================================================== */
